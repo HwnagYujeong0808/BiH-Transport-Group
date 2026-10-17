@@ -1,10 +1,16 @@
-import { Route, MapPin, Repeat, Building2, Truck, Container, Headset, Phone, Printer, Mail, Clock, Users, Satellite, ShieldCheck } from 'lucide-react'
+import { Route, MapPin, Repeat, Building2, Phone, Printer, Mail, Clock, Users, Satellite, ShieldCheck } from 'lucide-react'
 import logo from './assets/logo.png'
 import logoFooter from './assets/logo-footer.png'
 import usMap from './assets/us-map.png'
+import iconTruck from './assets/icon-truck.png'
+import iconTrailers from './assets/icon-trailers.png'
+import iconDispatch from './assets/icon-dispatch.png'
 
 const PHONE = '(518) 478-8466'
+const TEL = `tel:${PHONE.replace(/\D/g, '')}`
 const EMAIL = 'dispatch@bihtransport.com'
+const ADDRESS = 'Albany, NY'
+const HOURS = ['Mon – Fri: 7:00 AM – 6:00 PM', 'Sat – Sun: 7:00 AM – 12:00 PM']
 
 const services = [
   { Icon: Route, title: 'Long Haul', text: 'Coast-to-coast freight across the lower 48.' },
@@ -14,9 +20,9 @@ const services = [
 ]
 
 const stats = [
-  { Icon: Truck, label: 'Since 2015' },
-  { Icon: Container, label: '48 States Covered' },
-  { Icon: Headset, label: '24/7 Dispatch' },
+  { img: iconTruck, label: 'Since 2015' },
+  { img: iconTrailers, label: '48 States Covered' },
+  { img: iconDispatch, label: '24/7 Dispatch' },
 ]
 
 export default function App() {
@@ -25,9 +31,9 @@ export default function App() {
       <header className="nav container">
         <a href="#top"><img src={logo} alt="BiH Transport Group LLC" className="nav-logo" /></a>
         <nav>
-          <a href="#about">About</a>
           <a href="#services">Services</a>
           <a href="#coverage">Coverage</a>
+          <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </nav>
       </header>
@@ -44,7 +50,64 @@ export default function App() {
         </div>
       </section>
 
-      <section className="section light" id="about">
+      <section className="info light">
+        <div className="container info-grid">
+          <div>
+            <Clock size={36} strokeWidth={1.5} />
+            <div>
+              <h4>Hours of Operation</h4>
+              {HOURS.map((h) => <p key={h}>{h}</p>)}
+            </div>
+          </div>
+          <div>
+            <MapPin size={36} strokeWidth={1.5} />
+            <div>
+              <h4>Location</h4>
+              <p>{ADDRESS}</p>
+            </div>
+          </div>
+          <div>
+            <Phone size={36} strokeWidth={1.5} />
+            <div>
+              <h4>Call Dispatch 24/7</h4>
+              <p><a href={TEL}>{PHONE}</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section container" id="services">
+        <p className="eyebrow">What we do</p>
+        <h2>Our Services</h2>
+        <div className="cards">
+          {services.map(({ Icon, title, text }) => (
+            <article className="card" key={title}>
+              <Icon size={40} strokeWidth={1.5} />
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section light" id="coverage">
+        <div className="container center">
+          <p className="eyebrow">Coverage</p>
+          <h2>Serving All 48 Contiguous States</h2>
+          <p className="muted">Excluding Alaska and Hawaii.</p>
+          <img src={usMap} alt="Map of the 48 contiguous United States" className="map" />
+          <div className="stats">
+            {stats.map(({ img, label }) => (
+              <div key={label}>
+                <img src={img} alt="" />
+                <h3>{label}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" id="about">
         <div className="container about">
           <div>
             <p className="eyebrow">About us</p>
@@ -80,41 +143,10 @@ export default function App() {
         </div>
       </section>
 
-      <section className="section container" id="services">
-        <p className="eyebrow">What we do</p>
-        <h2>Our Services</h2>
-        <div className="cards">
-          {services.map(({ Icon, title, text }) => (
-            <article className="card" key={title}>
-              <Icon size={40} strokeWidth={1.5} />
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section light" id="coverage">
-        <div className="container center">
-          <p className="eyebrow">Coverage</p>
-          <h2>Serving All 48 Contiguous States</h2>
-          <p className="muted">Excluding Alaska and Hawaii.</p>
-          <img src={usMap} alt="Map of the 48 contiguous United States" className="map" />
-          <div className="stats">
-            {stats.map(({ Icon, label }) => (
-              <div key={label}>
-                <Icon size={80} strokeWidth={1.2} />
-                <h3>{label}</h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="cta">
         <div className="container cta-inner">
           <h2>Freight to move? Our dispatch never sleeps.</h2>
-          <a href={`tel:${PHONE.replace(/\D/g, '')}`} className="btn btn-yellow">Contact Dispatch</a>
+          <a href={TEL} className="btn btn-yellow">Contact Dispatch</a>
         </div>
       </section>
 
@@ -127,15 +159,22 @@ export default function App() {
           <div>
             <h4>Contact</h4>
             <ul>
-              <li><Phone size={18} /><a href={`tel:${PHONE.replace(/\D/g, '')}`}>{PHONE}</a></li>
+              <li><Phone size={18} /><a href={TEL}>{PHONE}</a></li>
               <li><Printer size={18} />Fax (518) 729-2800</li>
               <li><Mail size={18} /><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
               <li><Clock size={18} />Dispatch 24/7</li>
+              <li><MapPin size={18} />{ADDRESS}</li>
             </ul>
           </div>
           <div>
             <h4>Service Area</h4>
             <p>48 contiguous United States</p>
+          </div>
+          <div>
+            <h4>Hours of Operation</h4>
+            <ul>
+              {HOURS.map((h) => <li key={h}>{h}</li>)}
+            </ul>
           </div>
         </div>
         <div className="container copyright">© {new Date().getFullYear()} BiH Transport Group LLC. All rights reserved.</div>

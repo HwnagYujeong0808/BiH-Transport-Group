@@ -44,6 +44,15 @@ img { max-width: 100%; display: block; }
 .btn-outline:hover { background: rgba(255,255,255,.1); }
 .btn-yellow { background: var(--yellow); color: var(--ink); white-space: nowrap; }
 
+/* Info band (hours / location / phone) */
+.info { padding: 40px 0; border-bottom: 1px solid #e3e7ec; }
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; }
+.info-grid > div { display: flex; gap: 18px; color: var(--blue); }
+.info-grid svg { flex-shrink: 0; }
+.info h4 { color: var(--blue); font-size: .85rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 8px; }
+.info p { color: var(--ink); font-size: 1.2rem; font-weight: 700; line-height: 1.5; }
+.info a:hover { color: var(--blue); }
+
 /* Sections */
 .section { padding: 88px 0; }
 .eyebrow { color: var(--blue); font-weight: 700; font-size: .85rem; text-transform: uppercase; letter-spacing: .12em; }
@@ -58,6 +67,7 @@ h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; margin-top: 8px; }
 .light { background: var(--light); }
 .map { width: min(880px, 100%); margin: 56px auto 72px; }
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; color: var(--blue); }
+.stats img { height: 100px; width: auto; margin-inline: auto; }
 .stats h3 { color: var(--ink); font-size: 1.2rem; font-weight: 700; margin-top: 16px; }
 
 .about { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px; align-items: start; }
