@@ -7,9 +7,12 @@ import iconTrailers from './assets/icon-trailers.png'
 import iconDispatch from './assets/icon-dispatch.png'
 
 const PHONE = '(518) 478-8466'
+const FAXNUM = '(518) 729-2800'
 const TEL = `tel:${PHONE.replace(/\D/g, '')}`
-const EMAIL = 'dispatch@bihtransport.com'
-const ADDRESS = 'Albany, NY'
+const FAX = `tel:${FAXNUM.replace(/\D/g, '')}`
+const EMAIL = 'contact@bihtransportllc.com'
+const ADDRESS = '84 Harris Ave, Albany, NY, 12208'
+const WEBSITE = 'bihtransportllc.com'
 const HOURS = ['Mon – Fri: 7:00 AM – 6:00 PM', 'Sat – Sun: 7:00 AM – 12:00 PM']
 
 const services = [
@@ -163,7 +166,7 @@ export default function App() {
             <h4>Contact</h4>
             <ul>
               <li><Phone size={18} /><a href={TEL}>{PHONE}</a></li>
-              <li><Printer size={18} />Fax (518) 729-2800</li>
+              <li><Fax size={18} />Fax (518) 729-2800</li>
               <li><Mail size={18} /><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
               <li><Clock size={18} />Dispatch 24/7</li>
               <li><MapPin size={18} />{ADDRESS}</li>
