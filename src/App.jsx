@@ -10,9 +10,9 @@ const PHONE = '(518) 478-8466'
 const FAXNUM = '(518) 729-2800'
 const TEL = `tel:${PHONE.replace(/\D/g, '')}`
 const FAX = `tel:${FAXNUM.replace(/\D/g, '')}`
-const EMAIL = 'contact@bihtransportllc.com'
+const EMAIL = 'contact@bihtransportgroupllc.com'
 const ADDRESS = '84 Harris Ave, Albany, NY, 12208'
-const WEBSITE = 'bihtransportllc.com'
+const WEBSITE = 'bihtransportgroupllc.com'
 const HOURS = ['Mon – Fri: 7:00 AM – 6:00 PM', 'Sat – Sun: 7:00 AM – 12:00 PM']
 
 const services = [
