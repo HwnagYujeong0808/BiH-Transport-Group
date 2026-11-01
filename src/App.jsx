@@ -13,6 +13,7 @@ const FAX = `tel:${FAXNUM.replace(/\D/g, '')}`
 const EMAIL = 'contact@bihtransportgroupllc.com'
 const ADDRESS = '84 Harris Ave, Albany, NY, 12208'
 const WEBSITE = 'bihtransportgroupllc.com'
+const sent = new URLSearchParams(window.location.search).has('sent')
 const HOURS = ['Mon – Fri: 7:00 AM – 6:00 PM', 'Sat – Sun: 7:00 AM – 12:00 PM']
 
 const services = [
@@ -32,6 +33,8 @@ export default function App() {
   return (
 
     <>
+      {sent && <p className="form-sent" role="status">Thank you! Your message has been sent. We'll get back to you soon.</p>}
+
       <header className="nav container">
         
         <a href="#top"><img src={logo} alt="BiH Transport Group LLC" className="nav-logo" /></a>
@@ -149,6 +152,27 @@ export default function App() {
         </div>
       </section>
 
+      <section className="section light" id="contact">
+        <div className="container contact">
+          <p className="eyebrow">Contact us</p>
+          <h2>Contact Form</h2>
+          <p className="muted">Send an email. All fields with an * are required.</p>
+          {/* FormSubmit emails submissions to EMAIL and shows its reCAPTCHA step after Send */}
+          <form action={`https://formsubmit.co/${EMAIL}`} method="POST">
+            <input type="hidden" name="_next" value={`https://${WEBSITE}/?sent=1`} />
+            <input type="text" name="_honey" tabIndex={-1} autoComplete="off" hidden />
+            <label><span>Name *</span><input name="name" autoComplete="name" required /></label>
+            <label><span>Email *</span><input type="email" name="email" autoComplete="email" required /></label>
+            <label><span>Subject *</span><input name="_subject" required /></label>
+            <label><span>Message *</span><textarea name="message" rows={8} required /></label>
+            <div className="form-actions">
+              <button type="submit" className="btn btn-primary">Send Email</button>
+              <small>You'll confirm you're not a robot on the next screen.</small>
+            </div>
+          </form>
+        </div>
+      </section>
+
       <section className="cta">
         <div className="container cta-inner">
           <h2>Freight to move? Our dispatch never sleeps.</h2>
@@ -156,7 +180,7 @@ export default function App() {
         </div>
       </section>
 
-      <footer className="footer" id="contact">
+      <footer className="footer">
         <div className="container footer-grid">
           <div>
             <img src={logoFooter} alt="BiH Transport Group LLC" className="footer-logo" />
