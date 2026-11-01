@@ -166,7 +166,7 @@ export default function App() {
             <h4>Contact</h4>
             <ul>
               <li><Phone size={18} /><a href={TEL}>{PHONE}</a></li>
-              <li><Fax size={18} />Fax (518) 729-2800</li>
+              <li><Printer size={18} />Fax (518) 729-2800</li>
               <li><Mail size={18} /><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
               <li><Clock size={18} />Dispatch 24/7</li>
               <li><MapPin size={18} />{ADDRESS}</li>
